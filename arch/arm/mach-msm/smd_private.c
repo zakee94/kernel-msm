@@ -330,4 +330,3 @@ struct smd_half_channel_access *get_half_ch_funcs(unsigned ch_type)
 	else
 		return &byte_access;
 }
-
