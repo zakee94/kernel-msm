@@ -88,9 +88,9 @@ static struct alucard_tuners {
 	.dec_cpu_load_at_min_freq = ATOMIC_INIT(40),
 	.dec_cpu_load = ATOMIC_INIT(50),
 #ifdef CONFIG_CPU_EXYNOS4210
-	.freq_responsiveness = ATOMIC_INIT(800000),
+	.freq_responsiveness = ATOMIC_INIT(998400),
 #else
-	.freq_responsiveness = ATOMIC_INIT(918000),
+	.freq_responsiveness = ATOMIC_INIT(1190400),
 #endif
 	.pump_inc_step = ATOMIC_INIT(1),
 	.pump_dec_step = ATOMIC_INIT(1),
