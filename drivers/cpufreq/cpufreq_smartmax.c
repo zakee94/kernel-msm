@@ -39,15 +39,12 @@
 #include <linux/slab.h>
 #include <linux/kernel_stat.h>
 
-<<<<<<< HEAD
 #ifdef CONFIG_CPU_FREQ_GOV_SMARTMAX_TEGRA
 extern int tegra_input_boost (struct cpufreq_policy *policy,
 		       unsigned int target_freq,
 		       unsigned int relation);
 #endif
 
-=======
->>>>>>> d41d6b5... cpufreq: Add awesome governors
 /******************** Tunable parameters: ********************/
 
 /*
@@ -56,7 +53,6 @@ extern int tegra_input_boost (struct cpufreq_policy *policy,
  * lowering the frequency towards the ideal frequency is faster than below it.
  */
 
-<<<<<<< HEAD
 
 #ifdef CONFIG_CPU_FREQ_GOV_SMARTMAX_ENRC2B
 #define DEFAULT_SUSPEND_IDEAL_FREQ 384000
@@ -105,10 +101,6 @@ extern int tegra_input_boost (struct cpufreq_policy *policy,
 #ifdef CONFIG_CPU_FREQ_GOV_SMARTMAX_M7
 #define DEFAULT_SUSPEND_IDEAL_FREQ 384000
 #define DEFAULT_AWAKE_IDEAL_FREQ 998400
-=======
-#define DEFAULT_SUSPEND_IDEAL_FREQ 652800
-#define DEFAULT_AWAKE_IDEAL_FREQ 1036800
->>>>>>> d41d6b5... cpufreq: Add awesome governors
 #define DEFAULT_RAMP_UP_STEP 200000
 #define DEFAULT_RAMP_DOWN_STEP 200000
 #define DEFAULT_MAX_CPU_LOAD 55
@@ -117,7 +109,6 @@ extern int tegra_input_boost (struct cpufreq_policy *policy,
 #define DEFAULT_DOWN_RATE 60000
 #define DEFAULT_SAMPLING_RATE 30000
 #define DEFAULT_INPUT_BOOST_DURATION 150000
-<<<<<<< HEAD
 #define DEFAULT_TOUCH_POKE_FREQ 1190400
 #define DEFAULT_BOOST_FREQ 1190400
 #define DEFAULT_IO_IS_BUSY 0
@@ -140,12 +131,6 @@ extern int tegra_input_boost (struct cpufreq_policy *policy,
 #define DEFAULT_IO_IS_BUSY 0
 #define DEFAULT_IGNORE_NICE 1
 #endif
-=======
-#define DEFAULT_TOUCH_POKE_FREQ 1497600
-#define DEFAULT_BOOST_FREQ 1497600
-#define DEFAULT_IO_IS_BUSY 0
-#define DEFAULT_IGNORE_NICE 1
->>>>>>> d41d6b5... cpufreq: Add awesome governors
 
 static unsigned int suspend_ideal_freq;
 static unsigned int awake_ideal_freq;
@@ -308,7 +293,6 @@ struct cpufreq_governor cpufreq_gov_smartmax = {
     .owner = THIS_MODULE,
     };
 
-<<<<<<< HEAD
 static inline u64 get_cpu_idle_time_jiffy(unsigned int cpu, u64 *wall) {
 
 	u64 idle_time;
@@ -352,8 +336,6 @@ static inline u64 get_cpu_idle_time(unsigned int cpu, u64 *wall)
 	return idle_time;
 }
 
-=======
->>>>>>> d41d6b5... cpufreq: Add awesome governors
 static inline u64 get_cpu_iowait_time(unsigned int cpu, u64 *wall) {
 	u64 iowait_time = get_cpu_iowait_time_us(cpu, wall);
 
@@ -580,11 +562,7 @@ static void cpufreq_smartmax_timer(struct smartmax_info_s *this_smartmax) {
 		
 		j_this_smartmax = &per_cpu(smartmax_info, j);
 
-<<<<<<< HEAD
 		cur_idle_time = get_cpu_idle_time(j, &cur_wall_time);
-=======
-		cur_idle_time = get_cpu_idle_time(j, &cur_wall_time, io_is_busy);
->>>>>>> d41d6b5... cpufreq: Add awesome governors
 		cur_iowait_time = get_cpu_iowait_time(j, &cur_wall_time);
 
 		wall_time = cur_wall_time - j_this_smartmax->prev_cpu_wall;
@@ -695,11 +673,7 @@ static void update_idle_time(bool online) {
 		j_this_smartmax = &per_cpu(smartmax_info, j);
 
 		j_this_smartmax->prev_cpu_idle = get_cpu_idle_time(j,
-<<<<<<< HEAD
 				&j_this_smartmax->prev_cpu_wall);
-=======
-				&j_this_smartmax->prev_cpu_wall, io_is_busy);
->>>>>>> d41d6b5... cpufreq: Add awesome governors
 				
 		if (ignore_nice)
 #ifdef CONFIG_CPU_FREQ_GOV_SMARTMAX_30
@@ -1146,11 +1120,7 @@ static int cpufreq_smartmax_boost_task(void *data) {
 		tegra_input_boost(policy, cur_boost_freq, CPUFREQ_RELATION_H);
 	
         this_smartmax->prev_cpu_idle = get_cpu_idle_time(0,
-<<<<<<< HEAD
 						&this_smartmax->prev_cpu_wall);
-=======
-						&this_smartmax->prev_cpu_wall, io_is_busy);
->>>>>>> d41d6b5... cpufreq: Add awesome governors
 
         unlock_policy_rwsem_write(0);
 #else		
@@ -1174,11 +1144,7 @@ static int cpufreq_smartmax_boost_task(void *data) {
 				start_boost = true;
 				dprintk(SMARTMAX_DEBUG_BOOST, "input boost cpu %d to %d\n", cpu, cur_boost_freq);
 				target_freq(policy, this_smartmax, cur_boost_freq, this_smartmax->old_freq, CPUFREQ_RELATION_H);
-<<<<<<< HEAD
 				this_smartmax->prev_cpu_idle = get_cpu_idle_time(cpu, &this_smartmax->prev_cpu_wall);
-=======
-				this_smartmax->prev_cpu_idle = get_cpu_idle_time(cpu, &this_smartmax->prev_cpu_wall, io_is_busy);
->>>>>>> d41d6b5... cpufreq: Add awesome governors
 			}
 			mutex_unlock(&this_smartmax->timer_mutex);
 
