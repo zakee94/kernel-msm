@@ -135,6 +135,10 @@ config CPU_FREQ_DEFAULT_GOV_PEGASUSQ
 	help
 	  Use the CPUFreq governor 'pegasusq' as default
 
+config CPU_FREQ_DEFAULT_GOV_ALUCARD
+  bool "alucard"
+  select CPU_FREQ_GOV_ALUCARD
+  help
 
 
 config CPU_FREQ_DEFAULT_GOV_BADASS
@@ -291,6 +295,10 @@ config CPU_FREQ_GOV_SMARTMAX
         select CPU_FREQ_TABLE
         help
           'smartmax' combined ondemand and smartass2
+
+config CPU_FREQ_GOV_ALUCARD
+	tristate "'alucard' cpufreq governor"
+	depends on CPU_FREQ
 
 config CPU_FREQ_GOV_INTELLIDEMAND
         tristate "'intellidemand' cpufreq policy governor"
