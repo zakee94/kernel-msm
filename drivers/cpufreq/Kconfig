@@ -170,7 +170,6 @@ config CPU_FREQ_DEFAULT_GOV_INTELLIMM
           governor will use only 3 different frequencies, idle, UI and max
 
 
-endchoice
 
 config CPU_FREQ_GOV_PERFORMANCE
 	tristate "'performance' governor"
