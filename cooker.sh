@@ -54,19 +54,6 @@ if [[ "$begin" == "y" || "$begin" == "Y" ]]; then
     echo -e "\nDONE !"
   fi
   echo -e "\n------------------------------------------------------------"
-  echo -e "\nMake defconfig ??"
-  echo -e "To make enter [Y/y], any other character to not make."
-  read config
-  if [[ "$config" == "y" || "$config" == "Y" ]]; then
-    if [ -a .config ]; then
-      echo -e "\nPrevious .config detected, make sure to clean first"
-      echo -e "and then try again !"
-    else
-      ARCH=$architect make $defconfig
-      echo -e "\nDONE !"
-    fi
-  fi
-  echo -e "\n------------------------------------------------------------"
   echo -e "\nMake menuconfig ??"
   echo -e "To make enter [Y/y], any other character to not make."
   read mn_config
@@ -77,6 +64,19 @@ if [[ "$begin" == "y" || "$begin" == "Y" ]]; then
     else
       echo -e "\n.config not detected, make sure to make defconfig first"
       echo -e "and then try again !"
+    fi
+  fi
+  echo -e "\n------------------------------------------------------------"
+  echo -e "\nMake defconfig ??"
+  echo -e "To make enter [Y/y], any other character to not make."
+  read config
+  if [[ "$config" == "y" || "$config" == "Y" ]]; then
+    if [ -a .config ]; then
+      echo -e "\nPrevious .config detected, make sure to clean first"
+      echo -e "and then try again !"
+    else
+      ARCH=$architect make $defconfig
+      echo -e "\nDONE !"
     fi
   fi
   echo -e "\n------------------------------------------------------------"
