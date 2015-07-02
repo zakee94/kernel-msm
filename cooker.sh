@@ -6,7 +6,7 @@
 # By default supports Moto G 2014, however can be modified for ANY device.
 # Personal Space -->
 export CROSS_COMPILE=/home/zakee94/cooker/toolchains/lk4-9/bin/arm-eabi-
-architect=ARCH=arm
+architect=arm
 BOOT=arch/arm/boot
 defconfig=stellar_defconfig
 archive_name=StellarKernel_
@@ -62,7 +62,7 @@ if [[ "$begin" == "y" || "$begin" == "Y" ]]; then
       echo -e "\nPrevious .config detected, make sure to clean first"
       echo -e "and then try again !"
     else
-      $architect make $defconfig
+      ARCH=$architect make $defconfig
       echo -e "\nDONE !"
     fi
   fi
@@ -88,7 +88,7 @@ if [[ "$begin" == "y" || "$begin" == "Y" ]]; then
     echo -e "\nPrevious build detected  make sure to clean first"
     echo -e "and then try again !"
     else
-      make -j5 $architect
+      make -j5 ARCH=$architect
     fi
   fi
   echo -e "\n------------------------------------------------------------"
