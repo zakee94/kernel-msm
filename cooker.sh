@@ -11,7 +11,7 @@ BOOT=arch/arm/boot
 defconfig=stellar_defconfig
 archive_name=StellarKernel_exp4
 my_zip=/home/zakee94/cooker/my-zips
-anykernel=/home/zakee94/cooker/zippers/stellar-zip/kernel/
+anykernel=/home/zakee94/cooker/zippers/stellar-exp-zip/kernel/
 bootimg=/home/zakee94/cooker/kernel-makers/bootimg #
                                                    #
 bootzip_dir=/home/zakee94/cooker/zippers/bootimg-zip

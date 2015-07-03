@@ -42,7 +42,7 @@
 #include <linux/input/sweep2wake.h>
 #include <linux/input/doubletap2wake.h>
 extern bool ct_suspended;
-extern bool prox_covered;
+extern bool prox_covered=false;
 #endif
 
 #define DRIVER_NAME "synaptics_dsx_i2c"
@@ -2159,8 +2159,8 @@ static int synaptics_rmi4_irq_enable(struct synaptics_rmi4_data *rmi4_data,
 			disable_irq(rmi4_data->irq);
 			free_irq(rmi4_data->irq, rmi4_data);
 			rmi4_data->irq_enabled = false;
-		
-#ifdef CONFIG_TOUCHSCREEN_PREVENT_SLEEP	
+
+#ifdef CONFIG_TOUCHSCREEN_PREVENT_SLEEP
 		irq_set_irq_wake(rmi4_data->irq, 0);
 #endif
 
