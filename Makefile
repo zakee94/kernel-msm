@@ -1,7 +1,7 @@
 VERSION = 3
 PATCHLEVEL = 4
 SUBLEVEL = 42
-EXTRAVERSION =-StellarKernel_5.1
+EXTRAVERSION =-StellarKernel_5.2
 NAME = Saber-toothed Squirrel
 
 # *DOCUMENTATION*
